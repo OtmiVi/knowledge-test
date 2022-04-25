@@ -56,6 +56,8 @@ Route::middleware('auth')->
         Route::delete('/disciplinesgroups/destroy/{discipline}/{group}',
             [App\Http\Controllers\Admin\AdminDisciplineGroupController::class, 'destroy'])
             ->name('admin.disciplinesgroups.destroy');
+
+        Route::resource('test', AdminTestController::class)->names('admin.tests');
     });
 
 });

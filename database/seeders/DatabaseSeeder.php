@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
         \App\Models\DisciplineUser::factory(50)->create();
         \App\Models\DisciplineGroup::factory(50)->create();
         \App\Models\Test::factory(150)->create();
+        \App\Models\TestQuestion::factory(1500)->create();
+        \App\Models\TestAnswer::factory(6000)->create();
 
     }
 }

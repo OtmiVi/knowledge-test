@@ -60,15 +60,15 @@
 <ul class="list-group">
     <li class="list-group-item list-group-item-success d-flex justify-content-between">
         <p class="fs-5 mb-0">Тести:</p> 
-        <a class="btn btn-outline-dark" href="{{route('admin.disciplinesgroups.show', $item->id)}}"> додати тест</a>
+        <a class="btn btn-outline-dark" href="{{route('admin.tests.create')}}"> додати тест</a>
     </li>
     @foreach($item->tests as $test)
     <li class="list-group-item d-flex justify-content-between">
-        <a href="{{route('admin.groups.show', $group->id)}}">{{$test->title}}</a>
+        <a href="{{route('admin.tests.show', $test->id)}}">{{$test->title}}</a>
         
         <div>
-            <a href="" class="btn btn-outline-warning">O</a>
-            <form action="{{route('admin.disciplinesgroups.destroy',[$item->id, $group->id])}}" 
+            <a href="{{route('admin.tests.edit',$item->id)}}" class="btn btn-outline-warning">O</a>
+            <form action="{{route('admin.tests.destroy',$test->id)}}" 
                 method="post" 
                 class="d-inline"
                 onSubmit="return confirm('Підтвердити видалення');">

@@ -14,7 +14,9 @@ class TestFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->text(20),
+            'title' => 'Test: "'.$this->faker->text(20). '"',
+            'description' => $this->faker->text(),
+            'visible' => $this->faker->boolean(),
             'discipline_id' => $this->faker->numberBetween(1, 25),
         ];
     }
