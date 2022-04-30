@@ -51,8 +51,6 @@ class AdminTestController extends Controller
 
                     }
                     
-                    
-                    
                 }else{
                     return back()
                         ->withInput()
@@ -80,6 +78,26 @@ class AdminTestController extends Controller
     {
         $item = Test::find($id);
         return view('admin.test.show', compact('item'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $item = Test::findOrFail($id);
+        $item->delete();
+
+        if($item){
+            return back()
+            ->with(['success' => 'Видалено успішно']);
+        }else{
+            return back()->withErrors(['message' => 'Не вдалось видалити']);
+        }
+        
     }
 
 }
