@@ -52,7 +52,7 @@ window.addEventListener('load', () => {
 
         const question_textarea = document.createElement('textarea');
         question_textarea.id = "questionName";
-        question_textarea.name = `questions[${id}][]`;
+        question_textarea.name = `questions[${id}][question]`;
         question_textarea.className = "form-control mb-3";
         question_textarea.placeholder = "Введіть запитання";
         question_textarea.rows = 3;
@@ -162,7 +162,7 @@ window.addEventListener('load', () => {
         const radio = document.createElement('input');
         radio.className = "form-check-input";
         radio.type = "radio";
-        radio.name = `questions[${id}][]`;
+        radio.name = `questions[${id}][right]`;
         radio.value = number;
         radio.checked = is_active;
 

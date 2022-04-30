@@ -58,6 +58,8 @@ Route::middleware('auth')->
             ->name('admin.disciplinesgroups.destroy');
 
         Route::resource('test', AdminTestController::class)->names('admin.tests');
+        Route::get('/test/create/{discipline}',[App\Http\Controllers\Admin\AdminTestController::class, 'create'])
+            ->name('admin.tests.create');
     });
 
 });

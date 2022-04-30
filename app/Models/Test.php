@@ -9,7 +9,11 @@ class Test extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title'];
+    protected $fillable = [
+        'title',
+        'description',
+        'discipline_id',
+    ];
 
     public function questions(){
         return $this->hasMany(TestQuestion::class);

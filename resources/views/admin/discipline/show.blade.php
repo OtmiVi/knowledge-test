@@ -60,7 +60,7 @@
 <ul class="list-group">
     <li class="list-group-item list-group-item-success d-flex justify-content-between">
         <p class="fs-5 mb-0">Тести:</p> 
-        <a class="btn btn-outline-dark" href="{{route('admin.tests.create')}}"> додати тест</a>
+        <a class="btn btn-outline-dark" href="{{route('admin.tests.create', $item->id)}}"> додати тест</a>
     </li>
     @foreach($item->tests as $test)
     <li class="list-group-item d-flex justify-content-between">

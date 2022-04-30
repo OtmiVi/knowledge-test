@@ -17,7 +17,7 @@ class CreateTestsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->boolean('visible');
+            $table->boolean('visible')->default(false);
             $table->foreignId('discipline_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

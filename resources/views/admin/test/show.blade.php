@@ -8,12 +8,15 @@
 
 <p  class="text-center fs-1">Тест: {{$item->title}}</p>
 <p>{{$item->description}}</p>
+<hr>
 
-
+@php
+    $i = 1;
+@endphp
 @foreach($item->questions as $question)
 <ul class="list-group mb-3">
     <li class="list-group-item list-group-item-primary">
-        <p class="fs-5 mb-0">{{$question->question}}</p> 
+        <p class="fs-5 mb-0">{{$i++ }}. {{$question->question}}</p> 
     </li>
    
     @foreach($question->answers as $answer)

@@ -4,17 +4,70 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Test;
+use App\Models\TestAnswer;
+use App\Models\TestQuestion;
 use Illuminate\Http\Request;
 
 class AdminTestController extends Controller
 {
-    public function create()
+    public function create($discipline)
     {
-        return view('admin.test.create');
+        return view('admin.test.create', compact('discipline'));
     }
 
     public function store(Request $request){
-        dd($request);
+        $data = $request->input();
+        
+        $test = (new Test())->create($data);
+        
+        if($test){
+            foreach($data['questions'] as $testQuestion){
+
+                $question = (new TestQuestion())
+                    ->create([
+                        'question' => $testQuestion['question'],
+                        'test_id' => $test->id,
+                    ]);
+                
+                if($question){
+                    $isRight = $testQuestion['right'];
+                    for($i = 0; $i < count($testQuestion['answers']); $i++){
+                        $right = false;
+                        if($isRight == $i){
+                            $right = true;
+                        }
+                        $answer = (new TestAnswer())
+                            ->create([
+                                'answer' => $testQuestion['answers'][$i],
+                                'right' => $right,
+                                'test_question_id' => $question->id,
+                            ]);
+                        
+                        if(!$answer){
+                            return back()
+                                ->withInput()
+                                ->withErrors(['message' => "Невдале додавання відповідів"]);
+                        }
+
+                    }
+                    
+                    
+                    
+                }else{
+                    return back()
+                        ->withInput()
+                        ->withErrors(['message' => "Невдале додавання запитань"]);
+                }
+            }
+            return redirect()
+                ->route('admin.disciplines.show', $data['discipline_id'])
+                ->with(['success' => "Тест доданий"]);
+
+        }else{
+            return back()
+            ->withInput()
+            ->withErrors(['message' => "Невдале додавання тесту"]);
+        }
     }
 
     /**
@@ -25,7 +78,6 @@ class AdminTestController extends Controller
      */
     public function show($id)
     {
-        
         $item = Test::find($id);
         return view('admin.test.show', compact('item'));
     }
