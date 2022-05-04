@@ -1,8 +1,5 @@
 window.addEventListener('load', () => {
-    var num = 0;
 
-    const question_id = document.querySelector('#question');
-    question_id.value = num;
 
     const add_question = document.querySelector('#add_question');
 
@@ -39,16 +36,16 @@ window.addEventListener('load', () => {
         card_div.appendChild(card_body);
 
         const title = document.createElement('p');
-        title.innerText = "Запитання";
+        title.innerText = "Нове запитання";
         card_body.appendChild(title);
 
         const question_div = document.createElement('div');
-        question_div.value = ++num
         question_div.className = "input-group mb-3";
         
         card_body.appendChild(question_div);
 
-        const id = question_div.value;
+        const id = add_question.value;
+        add_question.value ++;
 
         const question_textarea = document.createElement('textarea');
         question_textarea.id = "questionName";
@@ -90,16 +87,20 @@ window.addEventListener('load', () => {
 
     });
 
-    const add_answer = document.querySelector('#add_answer');
+    const add_answers = document.querySelectorAll('#add_answer');
 
-    add_answer.addEventListener('click', (e) =>{
-		e.preventDefault();
-        const question = document.querySelector('#question');
-        const id = question.value;
-        question.appendChild(createAnswer(question, id, add_answer.value));
-        add_answer.value++;
-        
-    });
+    add_answers.forEach(add_answer =>
+        add_answer.addEventListener('click', (e) =>{
+            e.preventDefault();
+            const question = add_answer.parentNode.querySelector('#question');
+            const id = question.getAttribute("data-value");
+            question.appendChild(createAnswer(question, id, add_answer.value));
+            add_answer.value++;
+            
+        })
+    );
+
+    
 
     function createAnswer(parrent, id, number){
         const answer_div = document.createElement('div');

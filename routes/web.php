@@ -60,6 +60,14 @@ Route::middleware('auth')->
         Route::resource('test', AdminTestController::class)->names('admin.tests');
         Route::get('/test/create/{discipline}',[App\Http\Controllers\Admin\AdminTestController::class, 'create'])
             ->name('admin.tests.create');
+        Route::post('/test/update_test/{test}',[App\Http\Controllers\Admin\AdminTestController::class, 'updateTest'])
+            ->name('admin.tests.update_test');
+        Route::post('/test/destroy_question/{question}',
+            [App\Http\Controllers\Admin\AdminTestController::class, 'destroy_question'])
+            ->name('admin.tests.destroy_question');
+        Route::post('/test/destroy_answer/{answer}',
+            [App\Http\Controllers\Admin\AdminTestController::class, 'destroy_answer'])
+            ->name('admin.tests.destroy_answer');
     });
 
 });

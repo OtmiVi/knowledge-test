@@ -30,7 +30,7 @@
         <div class="card mb-3">
             <div class="card-body">
                 <p>Запитання</p>
-                <div class="input-group mb-3" id="question">
+                <div class="input-group mb-3" id="question" data-value="0">
                     <textarea 
                         id="questionName" 
                         name="questions[0][question]" 
@@ -75,7 +75,7 @@
         </div>
         
     </div>
-    <button class="btn btn-primary" id="add_question">Додати завдання</button>
+    <button class="btn btn-primary" id="add_question" value="1">Додати завдання</button>
     <hr>
     <button type="submit" class="btn btn-success">Створити тест</button>
 </form>

@@ -67,7 +67,7 @@
         <a href="{{route('admin.tests.show', $test->id)}}">{{$test->title}}</a>
         
         <div>
-            <a href="{{route('admin.tests.edit',$item->id)}}" class="btn btn-outline-warning">O</a>
+            <a href="{{route('admin.tests.edit',$test->id)}}" class="btn btn-outline-warning">O</a>
             <form action="{{route('admin.tests.destroy',$test->id)}}" 
                 method="post" 
                 class="d-inline"
