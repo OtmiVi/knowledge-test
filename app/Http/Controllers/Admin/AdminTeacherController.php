@@ -55,7 +55,7 @@ class AdminTeacherController extends Controller
 
 
         $item = true;
-        foreach($user->discipline as $discipline){
+        foreach($user->disciplines as $discipline){
             if($discipline->id == $data['discipline_id']) $item = false;
         }
         if($item){

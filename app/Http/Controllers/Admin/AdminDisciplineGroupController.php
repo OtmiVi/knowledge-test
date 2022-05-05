@@ -25,7 +25,7 @@ class AdminDisciplineGroupController extends Controller
 
 
         $item = true;
-        foreach($discipline->group as $group){
+        foreach($discipline->groups as $group){
             if($group->id == $data['group_id']) $item = false;
         }
         if($item){
