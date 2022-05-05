@@ -1,10 +1,11 @@
-@extends('admin.layouts.header')
+@extends('admin.layouts.app')
 
 @section('content')
 <a href="{{route('admin')}}" class="btn btn-secondary btn-sm">На головну</a>
 <a href="{{route('admin.teachers.index')}}" class="btn btn-secondary btn-sm">Список викладачів</a>
 <a href="{{route('admin.teachers.show', $item->id)}}" class="btn btn-secondary btn-sm">Профіль</a>
 @include('layouts.error')
+@include('layouts.success')
 
 <p  class="text-center fs-1">Викладач: {{$item->name}}</p>
 <form action="{{route('admin.teachers.store')}}" method="POST">

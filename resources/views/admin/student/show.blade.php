@@ -1,4 +1,4 @@
-@extends('admin.layouts.header')
+@extends('admin.layouts.app')
 
 @section('content')
 <a href="{{route('admin')}}" class="btn btn-secondary btn-sm">На головну</a>
@@ -15,7 +15,7 @@
         <a class="btn btn-success d-inline" href="{{route('admin.students.create', $item->id)}}">Додати групу</a>
     </div>
 @else
-    <p>Група: <a href="{{route('admin.groups.show', $item->group[0]->id)}}">{{$item->group[0]->name}}</a></p>
+    <p>Група: <a class="text-decoration-none" href="{{route('admin.groups.show', $item->group[0]->id)}}">{{$item->group[0]->name}}</a></p>
 @endif
 
 <p>Email: {{$item->email}}</p>
@@ -26,7 +26,7 @@
     </li>
     @foreach($item->group[0]->disciplines as $discipline)
     <li class="list-group-item">
-        <a href="{{route('admin.disciplines.show', $discipline->id)}}">{{$discipline->name}}</a>
+        <a class="text-decoration-none" href="{{route('admin.disciplines.show', $discipline->id)}}">{{$discipline->name}}</a>
     </li>
     @endforeach
 </ul>

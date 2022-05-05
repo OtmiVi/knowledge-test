@@ -1,4 +1,4 @@
-@extends('admin.layouts.header')
+@extends('admin.layouts.app')
 
 @section('content')
 <a href="{{route('admin')}}" class="btn btn-secondary btn-sm">На головну</a>
@@ -28,7 +28,7 @@
         <div id="hintDescription" class="form-text">Введіть опис тесту</div>
     </div>
     
-    <button type="submit" >Оновити</button>
+    <button class="btn btn-warning" type="submit" >Оновити</button>
     <hr>
     @php
     $questions = $item->questions;
@@ -107,8 +107,6 @@
     </div>
     <button class="btn btn-primary" id="add_question" value="{{$i}}">Додати завдання</button>
     <hr>
-    
-    
 </form>
 
 <script src="{{ asset('js/newquestion.js')}}"></script>

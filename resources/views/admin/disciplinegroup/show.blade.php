@@ -1,4 +1,4 @@
-@extends('admin.layouts.header')
+@extends('admin.layouts.app')
 
 @section('content')
 <a href="{{route('admin')}}" class="btn btn-secondary btn-sm">На головну</a>
@@ -29,7 +29,7 @@
     </li>
     @foreach($item->groups as $group)
     <li class="list-group-item d-flex justify-content-between">
-        <a href="{{route('admin.groups.show', $group->id)}}">{{$group->name}}</a>
+        <a class="text-decoration-none" href="{{route('admin.groups.show', $group->id)}}">{{$group->name}}</a>
         <form action="{{route('admin.disciplinesgroups.destroy',[$item->id, $group->id])}}" 
             method="post" 
             class="d-inline"

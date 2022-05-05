@@ -1,4 +1,4 @@
-@extends('admin.layouts.header')
+@extends('admin.layouts.app')
 
 @section('content')
 <a href="{{route('admin')}}" class="btn btn-secondary btn-sm">На головну</a>

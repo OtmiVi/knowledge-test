@@ -1,4 +1,6 @@
-@include('admin.layouts.header')
+@extends('admin.layouts.app')
+
+@section('content')
 <div class="container">
     <div class="row">
         <a href="{{route('admin.groups.index')}} " class="col text-decoration-none">
@@ -33,3 +35,4 @@
         </a>
     </div>
 </div>
+@endsection 

@@ -1,4 +1,4 @@
-@extends('admin.layouts.header')
+@extends('admin.layouts.app')
 
 @section('content')
 <a href="{{route('admin')}}" class="btn btn-secondary btn-sm">На головну</a>
@@ -25,7 +25,7 @@
     @foreach($item->users->sortBy('name') as $user)
         <tr>
             <td>{{$number ++}}</td>
-            <td><a href="{{route('admin.students.show', $user->id)}}">{{$user->name}}</a></td>
+            <td><a class="text-decoration-none" href="{{route('admin.students.show', $user->id)}}">{{$user->name}}</a></td>
             <td>
                 <form action="{{route('admin.students.destroy', $user->id)}}" 
                     method="post" 

@@ -1,4 +1,4 @@
-@extends('admin.layouts.header')
+@extends('admin.layouts.app')
 
 @section('content')
 
@@ -13,6 +13,7 @@
 <p>Email: {{$item->email}}</p>
 <p>Посада: {{$item->teacherDescription->position}}</p>
 <p>{{$item->teacherDescription->description}}</p>
+<hr>
 <ul class="list-group">
     <li class="list-group-item list-group-item-success d-flex justify-content-between">
         <p class="fs-5 mb-0">Дисципліни які викладаються:</p> 
@@ -20,7 +21,7 @@
     </li>
     @foreach($item->disciplines as $discipline)
     <li class="list-group-item d-flex justify-content-between">
-        <a href="{{route('admin.disciplines.show', $discipline->id)}}">{{$discipline->name}}</a>
+        <a class="text-decoration-none" href="{{route('admin.disciplines.show', $discipline->id)}}">{{$discipline->name}}</a>
         <form action="{{route('admin.teachers.destroy_discipline',[$item->id,$discipline->id])}}" 
             method="post" 
             class="d-inline"

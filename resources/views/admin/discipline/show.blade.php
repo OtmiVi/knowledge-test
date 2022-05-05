@@ -1,4 +1,4 @@
-@extends('admin.layouts.header')
+@extends('admin.layouts.app')
 
 @section('content')
 <a href="{{route('admin')}}" class="btn btn-secondary btn-sm">На головну</a>
@@ -8,7 +8,7 @@
 
 <p  class="text-center fs-1">Дисципліна: {{$item->name}}</p>
 <p>{{$item->description}}</p>
-
+<hr>
 
 
 <ul class="list-group mb-3">
@@ -17,7 +17,7 @@
     </li>
     @foreach($item->users->sortBy('name') as $user)
     <li class="list-group-item d-flex justify-content-between">
-        <a href="{{route('admin.teachers.show', $user->id)}}">{{$user->name}}</a>
+        <a class="text-decoration-none" href="{{route('admin.teachers.show', $user->id)}}">{{$user->name}}</a>
         <form action="{{route('admin.teachers.destroy_discipline',[$user->id, $item->id])}}" 
             method="post" 
             class="d-inline"
@@ -40,7 +40,7 @@
     </li>
     @foreach($item->groups->sortBy('name') as $group)
     <li class="list-group-item d-flex justify-content-between">
-        <a href="{{route('admin.groups.show', $group->id)}}">{{$group->name}}</a>
+        <a class="text-decoration-none" href="{{route('admin.groups.show', $group->id)}}">{{$group->name}}</a>
         <form action="{{route('admin.disciplinesgroups.destroy',[$item->id, $group->id])}}" 
             method="post" 
             class="d-inline"
@@ -64,7 +64,7 @@
     </li>
     @foreach($item->tests as $test)
     <li class="list-group-item d-flex justify-content-between">
-        <a href="{{route('admin.tests.show', $test->id)}}">{{$test->title}}</a>
+        <a class="text-decoration-none" href="{{route('admin.tests.show', $test->id)}}">{{$test->title}}</a>
         
         <div>
             <a href="{{route('admin.tests.edit',$test->id)}}" class="btn btn-outline-warning">O</a>
@@ -84,6 +84,17 @@
     </li>
     @endforeach
 </ul>
-
+<hr>
+<a class="btn btn-outline-warning" href="{{route('admin.disciplines.edit', $item->id)}}">Оновити</a>
+<form action="{{route('admin.disciplines.destroy', $item->id)}}" 
+    method="post" 
+    class="d-inline" 
+    onSubmit="return confirm('Підтвердити видалення');">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-outline-danger">
+        Видалити
+    </button>
+</form>
 
 @endsection
