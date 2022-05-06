@@ -9,6 +9,14 @@
 @include('layouts.error')
 @include('layouts.success')
 
+<form action="{{route('admin.teachers.search')}}" method="get">
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Пошук викладача" name="name">
+        <button type="submit" class="btn btn-outline-primary">знайти</button>
+    </div>
+</form>
+<br>
+@if(count($items))
 <table class="table table-striped table-hover" >
     <thead >
         <tr class="table-dark">
@@ -45,5 +53,10 @@
     </tbody>
 </table>
 
-{{ $items->links() }}
+{{ $items->withQueryString()->links() }}
+@else
+<div class="alert alert-dark" role="alert">
+    Викладачів немає
+</div>
+@endif
 @endsection

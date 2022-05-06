@@ -23,6 +23,12 @@ class AdminStudentController extends Controller
         return view('admin.student.index', compact('items'));
     }
 
+    public function search(Request $request){
+        $name = $request->name;
+        $items = User::where('user_type', 'student')->where('name', 'LIKE', "%{$name}%")->orderBy('name')->paginate(10);
+        return view('admin.student.index', compact('items'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
