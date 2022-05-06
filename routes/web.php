@@ -22,51 +22,64 @@ Auth::routes();
 
 Route::middleware('auth')->
     group(function(){
-
+    
     Route::get('home', [App\Http\Controllers\HomeController::class, 'index']);
 
     Route::prefix('admin')->
     namespace('App\Http\Controllers\Admin')->
     middleware('role:admin')->
     group( function(){
-        Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
 
+        #AdminController
+        Route::get('/', 'AdminController@index')->name('admin');
+
+        #GroupController
         Route::resource('groups', AdminGroupController::class)->names('admin.groups');
 
+        #UserController
+        Route::get('/users/showall', 'AdminUserController@showAll')->name('admin.users.showAll');
+
+        #StudentController
+        Route::get('/students/search','AdminStudentController@search')
+            ->name('admin.students.search');
         $studentMetods = ['index', 'edit', 'store', 'show', 'update', 'destroy'];
         Route::resource('students', AdminStudentController::class)->names('admin.students')
             ->only($studentMetods);
-        Route::get('/students/create/{student}',[App\Http\Controllers\Admin\AdminStudentController::class, 'create'])
+        Route::get('/students/create/{student}','AdminStudentController@create')
             ->name('admin.students.create');
+        
 
+        #TeacherController
+        Route::get('/teachers/search','AdminTeacherController@search')
+            ->name('admin.teachers.search');
         $teacherMetods = ['index', 'edit', 'store', 'show', 'update', 'destroy'];
-        Route::resource('teachers', AdminTeacherController::class)->names('admin.teachers')->only($teacherMetods);
-        Route::get('/teachers/create/{teacher}',[App\Http\Controllers\Admin\AdminTeacherController::class, 'create'])
+        Route::resource('teachers', AdminTeacherController::class)
+            ->names('admin.teachers')
+            ->only($teacherMetods);
+        Route::get('/teachers/create/{teacher}','AdminTeacherController@create')
             ->name('admin.teachers.create');
-        Route::delete('/teachers/destroy_discipline/{techer}/{discipline}',
-            [App\Http\Controllers\Admin\AdminTeacherController::class, 'destroyDiscipline'])
+        Route::delete('/teachers/destroy_discipline/{techer}/{discipline}','AdminTeacherController::@destroyDiscipline')
             ->name('admin.teachers.destroy_discipline');
-
+        #DisciplineController
         Route::resource('disciplines', AdminDisciplineController::class)->names('admin.disciplines');
 
+        #DisciplineGroupController
         $disciplinesGroupsMetods = ['store', 'show'];
         Route::resource('disciplinesgroups', AdminDisciplineGroupController::class)
             ->names('admin.disciplinesgroups')
             ->only($disciplinesGroupsMetods);
-        Route::delete('/disciplinesgroups/destroy/{discipline}/{group}',
-            [App\Http\Controllers\Admin\AdminDisciplineGroupController::class, 'destroy'])
+        Route::delete('/disciplinesgroups/destroy/{discipline}/{group}','AdminDisciplineGroupController@destroy')
             ->name('admin.disciplinesgroups.destroy');
 
+        #TestController
         Route::resource('test', AdminTestController::class)->names('admin.tests');
-        Route::get('/test/create/{discipline}',[App\Http\Controllers\Admin\AdminTestController::class, 'create'])
+        Route::get('/test/create/{discipline}','AdminTestController@create')
             ->name('admin.tests.create');
-        Route::post('/test/update_test/{test}',[App\Http\Controllers\Admin\AdminTestController::class, 'updateTest'])
+        Route::post('/test/update_test/{test}','AdminTestController@updateTest')
             ->name('admin.tests.update_test');
-        Route::post('/test/destroy_question/{question}',
-            [App\Http\Controllers\Admin\AdminTestController::class, 'destroy_question'])
+        Route::post('/test/destroy_question/{question}','AdminTestController@destroyQuestion')
             ->name('admin.tests.destroy_question');
-        Route::post('/test/destroy_answer/{answer}',
-            [App\Http\Controllers\Admin\AdminTestController::class, 'destroy_answer'])
+        Route::post('/test/destroy_answer/{answer}','AdminTestController@destroyAnswer')
             ->name('admin.tests.destroy_answer');
     });
 

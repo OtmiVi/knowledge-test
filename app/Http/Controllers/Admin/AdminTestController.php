@@ -193,7 +193,7 @@ class AdminTestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy_question($id)
+    public function destroyQuestion($id)
     {
         $item = TestQuestion::findOrFail($id);
         $item->delete();
@@ -213,7 +213,7 @@ class AdminTestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy_answer($id)
+    public function destroynAswer($id)
     {
         $item = TestAnswer::findOrFail($id);
         $item->delete();
