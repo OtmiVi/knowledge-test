@@ -37,7 +37,9 @@ Route::middleware('auth')->
         Route::resource('groups', AdminGroupController::class)->names('admin.groups');
 
         #UserController
-        Route::get('/users/showall', 'AdminUserController@showAll')->name('admin.users.showAll');
+        Route::get('/users/search','AdminUserController@search')
+            ->name('admin.users.search');
+        Route::resource('users', AdminUserController::class)->names('admin.users');
 
         #StudentController
         Route::get('/students/search','AdminStudentController@search')
