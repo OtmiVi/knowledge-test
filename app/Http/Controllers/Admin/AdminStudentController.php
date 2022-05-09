@@ -20,13 +20,13 @@ class AdminStudentController extends Controller
     public function index()
     {
         $items = User::where('user_type', 'student')->orderBy('name')->paginate(10);
-        return view('admin.student.index', compact('items'));
+        return view('admin.students.index', compact('items'));
     }
 
     public function search(Request $request){
         $name = $request->name;
         $items = User::where('user_type', 'student')->where('name', 'LIKE', "%{$name}%")->orderBy('name')->paginate(10);
-        return view('admin.student.index', compact('items'));
+        return view('admin.students.index', compact('items'));
     }
 
     /**
@@ -40,7 +40,7 @@ class AdminStudentController extends Controller
         $groups = Group::all();
         $item = User::find($id);
         if($item){
-            return view('admin.student.create', compact('item', 'groups'));
+            return view('admin.students.create', compact('item', 'groups'));
         }else{
             return back()->withErrors(['message' => 'Не вдалось знайти']);
         }
@@ -78,7 +78,7 @@ class AdminStudentController extends Controller
     public function show($id)
     {
         $item = User::find($id);
-        return view('admin.student.show', compact('item'));
+        return view('admin.students.show', compact('item'));
     }
 
     /**
@@ -92,7 +92,7 @@ class AdminStudentController extends Controller
         $groups = Group::all();
         $item = User::find($id);
         if($item){
-            return view('admin.student.edit', compact('item', 'groups'));
+            return view('admin.students.edit', compact('item', 'groups'));
         }else{
             return back()->withErrors(['message' => 'Не вдалось знайти']);
         }

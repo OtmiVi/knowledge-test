@@ -16,7 +16,7 @@ class AdminDisciplineController extends Controller
     public function index()
     {
         $items = Discipline::orderBy('name')->paginate(10);
-        return view('admin.discipline.index', compact('items'));
+        return view('admin.disciplines.index', compact('items'));
     }
 
     /**
@@ -26,7 +26,7 @@ class AdminDisciplineController extends Controller
      */
     public function create()
     {
-        return view('admin.discipline.create');
+        return view('admin.disciplines.create');
     }
 
     /**
@@ -61,7 +61,7 @@ class AdminDisciplineController extends Controller
     public function show($id)
     {
         $item = Discipline::find($id);
-        return view('admin.discipline.show', compact('item'));
+        return view('admin.disciplines.show', compact('item'));
 
     }
 
@@ -76,7 +76,7 @@ class AdminDisciplineController extends Controller
         $item = Discipline::find($id);
 
         if($item){
-            return view('admin.discipline.edit', compact('item'));
+            return view('admin.disciplines.edit', compact('item'));
         }else{
             return back()->withErrors(['message' => 'Не вдалось знайти']);
         }

@@ -21,13 +21,13 @@ class AdminTeacherController extends Controller
     public function index()
     {
         $items = User::where('user_type', 'teacher')->orderBy('name')->paginate(10);
-        return view('admin.teacher.index', compact('items'));
+        return view('admin.teachers.index', compact('items'));
     }
 
     public function search(Request $request){
         $name = $request->name;
         $items = User::where('user_type', 'teacher')->where('name', 'LIKE', "%{$name}%")->orderBy('name')->paginate(10);
-        return view('admin.teacher.index', compact('items'));
+        return view('admin.teachers.index', compact('items'));
     }
 
     /**
@@ -42,7 +42,7 @@ class AdminTeacherController extends Controller
         $item = User::find($id);
 
         if($item){
-            return view('admin.teacher.create', compact('item', 'disciplines'));
+            return view('admin.teachers.create', compact('item', 'disciplines'));
         }else{
             return back()->withErrors(['message' => 'Не вдалось знайти']);
         }
@@ -88,7 +88,7 @@ class AdminTeacherController extends Controller
     public function show($id)
     {
         $item = User::find($id);
-        return view('admin.teacher.show', compact('item'));
+        return view('admin.teachers.show', compact('item'));
     }
 
     /**
@@ -100,7 +100,7 @@ class AdminTeacherController extends Controller
     public function edit($id)
     {
         $item = User::find($id);
-        return view('admin.teacher.edit', compact('item'));
+        return view('admin.teachers.edit', compact('item'));
     }
 
     /**

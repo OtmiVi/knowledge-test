@@ -12,7 +12,7 @@ class AdminTestController extends Controller
 {
     public function create($discipline)
     {
-        return view('admin.test.create', compact('discipline'));
+        return view('admin.tests.create', compact('discipline'));
     }
 
     public function store(Request $request){
@@ -78,7 +78,7 @@ class AdminTestController extends Controller
     public function show($id)
     {
         $item = Test::find($id);
-        return view('admin.test.show', compact('item'));
+        return view('admin.tests.show', compact('item'));
     }
 
     /**
@@ -92,7 +92,7 @@ class AdminTestController extends Controller
         $item = Test::find($id);
 
         if($item){
-            return view('admin.test.edit', compact('item'));
+            return view('admin.tests.edit', compact('item'));
         }else{
             return back()->withErrors(['message' => 'Не вдалось знайти']);
         }

@@ -19,7 +19,7 @@ class AdminGroupController extends Controller
     public function index()
     {
         $items = Group::orderBy('name')->paginate(10);
-        return view('admin.group.index', compact('items'));
+        return view('admin.groups.index', compact('items'));
     }
 
     /**
@@ -29,7 +29,7 @@ class AdminGroupController extends Controller
      */
     public function create()
     {
-        return view('admin.group.create');
+        return view('admin.groups.create');
     }
 
     /**
@@ -64,7 +64,7 @@ class AdminGroupController extends Controller
     public function show($id)
     {
         $item = Group::find($id);
-        return view('admin.group.show', compact('item'));
+        return view('admin.groups.show', compact('item'));
 
     }
 
@@ -79,7 +79,7 @@ class AdminGroupController extends Controller
         $item = Group::find($id);
 
         if($item){
-            return view('admin.group.edit', compact('item'));
+            return view('admin.groups.edit', compact('item'));
         }else{
             return back()->withErrors(['message' => 'Не вдалось знайти']);
         }
