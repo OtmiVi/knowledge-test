@@ -16,7 +16,7 @@
     </div>
 </form>
 <br>
-@if(count($items))
+@if(!empty($items))
 <table class="table table-striped table-hover" >
     <thead >
         <tr class="table-dark">
@@ -31,7 +31,7 @@
         <tr>
             
             <td>{{$item->name}}</td>
-            <td>{{$item->teacherDescription->position}}</td>
+            <td>{{$item->teacherDescription->position ?? "без посади"}}</td>
             <td>
                 <a class="btn btn-outline-info" href="{{route('admin.teachers.show', $item->id)}}">Переглянути профіль</a>
             </td>

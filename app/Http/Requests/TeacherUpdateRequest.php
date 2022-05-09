@@ -26,8 +26,8 @@ class TeacherUpdateRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:50|',
             'email' => 'required|min:5|max:50|',
-            'position' => 'min:3|max:25',
-            'description' => 'min:3|max:500'
+            'position' => 'required|min:3|max:25',
+            'description' => 'required|min:3|max:500'
         ];
     }
 }

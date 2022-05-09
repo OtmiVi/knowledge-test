@@ -58,10 +58,10 @@ Route::middleware('auth')->
         Route::resource('teachers', AdminTeacherController::class)
             ->names('admin.teachers')
             ->only($teacherMetods);
-        Route::get('/teachers/create/{teacher}','AdminTeacherController@create')
-            ->name('admin.teachers.create');
-        Route::delete('/teachers/destroy_discipline/{techer}/{discipline}','AdminTeacherController::@destroyDiscipline')
-            ->name('admin.teachers.destroy_discipline');
+        Route::get('/teachers/add_discipline/{teacher}','AdminTeacherController@addDiscipline')
+            ->name('admin.teachers.addDiscipline');
+        Route::delete('/teachers/destroy_discipline/{techer}/{discipline}','AdminTeacherController@destroyDiscipline')
+            ->name('admin.teachers.destroyDiscipline');
         #DisciplineController
         Route::resource('disciplines', AdminDisciplineController::class)->names('admin.disciplines');
 

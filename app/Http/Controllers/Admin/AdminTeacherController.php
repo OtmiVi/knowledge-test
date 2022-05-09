@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\TeacherCreateRequest;
+use App\Http\Requests\TeacherAddDisciplineRequest;
 use App\Http\Requests\TeacherUpdateRequest;
 use App\Models\Discipline;
 use App\Models\DisciplineUser;
@@ -36,13 +36,13 @@ class AdminTeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function addDiscipline($id)
     {
         $disciplines = Discipline::all();
         $item = User::find($id);
 
         if($item){
-            return view('admin.teachers.create', compact('item', 'disciplines'));
+            return view('admin.teachers.addDiscipline', compact('item', 'disciplines'));
         }else{
             return back()->withErrors(['message' => 'Не вдалось знайти']);
         }
@@ -54,7 +54,7 @@ class AdminTeacherController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TeacherCreateRequest $request)
+    public function store(TeacherAddDisciplineRequest $request)
     {
         $data = $request->input();
         $user = User::find($data['user_id']);
@@ -70,7 +70,7 @@ class AdminTeacherController extends Controller
         
         if($item){
             return redirect()
-                ->route('admin.teachers.create', $data['user_id'])
+                ->route('admin.teachers.addDiscipline', $data['user_id'])
                 ->with(['success' => "Предмет доданий"]);
         }else{
             return back()

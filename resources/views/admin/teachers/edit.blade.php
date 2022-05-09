@@ -12,6 +12,7 @@
     <div class="mb-3">
         <label for="teacherName" class="form-label fs-3">Редагування профілю</label>
         <input type="text" 
+            required
             class="form-control" 
             id="teacherName" 
             name="name" 
@@ -19,6 +20,7 @@
             value="{{$item->name}}">
         <div id="hintName" class="form-text">Введіть нове ім'я викладача</div>
         <input type="email" 
+            required
             class="form-control" 
             id="teacherEmail" 
             name="email" 
@@ -26,6 +28,7 @@
             value="{{$item->email}}">
         <div id="hintEmail" class="form-text">Введіть новий email викладача</div>
         <input type="text" 
+            required
             class="form-control" 
             id="teacherPosition" 
             name="position" 
@@ -33,6 +36,7 @@
             value="{{$item->teacherDescription->position}}">
         <div id="hintPosition" class="form-text">Введіть нову посаду викладача</div>
         <textarea
+            required
             class="form-control" 
             id="teacherDescription" 
             name="description" 
