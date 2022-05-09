@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StudentCreateRequest;
+use App\Http\Requests\StudentAddGroupRequest;
 use App\Http\Requests\StudentUpdateRequest;
 use App\Models\Group;
 use Illuminate\Http\Request;
@@ -35,12 +35,12 @@ class AdminStudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function addGroup($id)
     {
         $groups = Group::all();
         $item = User::find($id);
         if($item){
-            return view('admin.students.create', compact('item', 'groups'));
+            return view('admin.students.addGroup', compact('item', 'groups'));
         }else{
             return back()->withErrors(['message' => 'Не вдалось знайти']);
         }
@@ -52,7 +52,7 @@ class AdminStudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StudentCreateRequest $request)
+    public function store(StudentAddGroupRequest $request)
     {
         $data = $request->input();
 

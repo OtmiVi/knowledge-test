@@ -16,7 +16,7 @@
     </div>
 </form>
 <br>
-@if(count($items))
+@if($items->count())
 <table class="table table-striped table-hover" >
     <thead >
         <tr class="table-dark">
@@ -28,7 +28,6 @@
     <tbody>
     @foreach($items as $item )
         <tr>
-            
             <td>{{$item->name}}</td>
             <td>
                 <a class="btn btn-outline-info" href="{{route('admin.students.show', $item->id)}}">Переглянути профіль</a>

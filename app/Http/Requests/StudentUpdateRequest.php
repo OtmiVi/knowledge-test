@@ -24,7 +24,9 @@ class StudentUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|min:3|max:50|',
+            'email' => 'required|min:5|max:50|',
+            'group_id' => 'numeric|',
         ];
     }
 }

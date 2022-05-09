@@ -47,8 +47,8 @@ Route::middleware('auth')->
         $studentMetods = ['index', 'edit', 'store', 'show', 'update', 'destroy'];
         Route::resource('students', AdminStudentController::class)->names('admin.students')
             ->only($studentMetods);
-        Route::get('/students/create/{student}','AdminStudentController@create')
-            ->name('admin.students.create');
+        Route::get('/students/addGroup/{student}','AdminStudentController@addGroup')
+            ->name('admin.students.addGroup');
         
 
         #TeacherController

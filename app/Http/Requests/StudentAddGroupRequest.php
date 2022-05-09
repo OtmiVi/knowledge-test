@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StudentCreateRequest extends FormRequest
+class StudentAddGroupRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,8 @@ class StudentCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'group_id' => 'numeric|',
+            'user_id' => 'numeric|required'
         ];
     }
 }
