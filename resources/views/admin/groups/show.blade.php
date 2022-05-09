@@ -9,6 +9,7 @@
 @include('layouts.error')
 @include('layouts.success')
 
+@if($item->users->count())
 <table class="table table-striped table-hover" >
     <thead >
         <tr class="table-dark">
@@ -42,5 +43,9 @@
     @endforeach
     </tbody>
 </table>
-
+@else
+<div class="alert alert-dark" role="alert">
+    Студентів немає
+</div>
+@endif
 @endsection

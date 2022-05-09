@@ -11,13 +11,14 @@
 @csrf
     <div class="mb-3">
         <label for="groupName" class="form-label fs-3">Назва групи</label>
+        <div id="hint" class="form-text">Введіть нову назву групи</div>
         <input type="text" 
+            required
             class="form-control" 
             id="groupName" 
             name="name" 
             aria-describedby="hint" 
             value="{{$item->name}}">
-        <div id="hint" class="form-text">Введіть нову назву групи</div>
     </div>
     <button type="submit" class="btn btn-warning">Оновити</button>
 </form>

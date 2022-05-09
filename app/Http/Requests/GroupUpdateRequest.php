@@ -24,7 +24,7 @@ class GroupUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:groups|min:2|max:10|',
+            'name' => 'required|min:2|max:10|',
         ];
     }
 }
