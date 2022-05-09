@@ -10,7 +10,18 @@ use Illuminate\Http\Request;
 
 class AdminDisciplineGroupController extends Controller
 {
-
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $groups = Group::all();
+        $item = Discipline::find($id);
+        return view('admin.disciplinegroup.show', compact('groups', 'item'));
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -41,20 +52,6 @@ class AdminDisciplineGroupController extends Controller
                 ->withInput()
                 ->withErrors(['message' => "Невдале додавання"]);
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $groups = Group::all();
-        $item = Discipline::find($id);
-        return view('admin.disciplinegroup.show', compact('groups', 'item'));
-
     }
 
     /**

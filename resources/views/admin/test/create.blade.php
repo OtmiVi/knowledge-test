@@ -80,6 +80,6 @@
     <button type="submit" class="btn btn-success">Створити тест</button>
 </form>
 
-<script src="{{ asset('js/newquestion.js')}}"></script>
+<script src="{{ asset('js/newQuestion.js')}}"></script>
 
 @endsection

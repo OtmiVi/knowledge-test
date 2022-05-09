@@ -109,6 +109,6 @@
     <hr>
 </form>
 
-<script src="{{ asset('js/newquestion.js')}}"></script>
+<script src="{{ asset('js/newQuestion.js')}}"></script>
 
 @endsection
