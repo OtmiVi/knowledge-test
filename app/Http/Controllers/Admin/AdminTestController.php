@@ -167,6 +167,17 @@ class AdminTestController extends Controller
             return back()->withErrors(['message' => 'Не вдалось оновити']);
         }
     }
+    public function changeVisible($id){
+        $item = Test::findOrFail($id);
+        if($item->visible){
+            $item->visible = false;
+        }else{
+            $item->visible = true;
+        }
+        $item->save();
+        return back()
+            ->with(['success' => "Тест оновлено"]);
+    }
 
     /**
      * Remove the specified resource from storage.

@@ -83,6 +83,8 @@ Route::middleware('auth')->
             ->name('admin.tests.destroy_question');
         Route::post('/test/destroy_answer/{answer}','AdminTestController@destroyAnswer')
             ->name('admin.tests.destroy_answer');
+        Route::get('test/visible/{test}', 'AdminTestController@changeVisible')
+            ->name('admin.tests.visible');
     });
 
 });

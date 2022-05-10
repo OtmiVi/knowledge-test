@@ -68,9 +68,14 @@
         <a class="btn btn-outline-dark" href="{{route('admin.tests.create', $item->id)}}"> додати тест</a>
     </li>
     @forelse($item->tests as $test)
+    @if($test->visible)
     <li class="list-group-item d-flex justify-content-between">
+    @else
+    <li class="list-group-item d-flex list-group-item-secondary justify-content-between">
+    @endif
         <a class="text-decoration-none" href="{{route('admin.tests.show', $test->id)}}">{{$test->title}}</a>
         <div>
+            <a href="{{route('admin.tests.visible',$test->id)}}" class="btn btn-outline-info">V</a>
             <a href="{{route('admin.tests.edit',$test->id)}}" class="btn btn-outline-warning">O</a>
             <form action="{{route('admin.tests.destroy',$test->id)}}" 
                 method="post" 
@@ -86,7 +91,7 @@
     </li>
     @empty
     <li class="list-group-item list-group-item-secondary">
-        Дисципліни не вибрано
+        Тестів немає
     </li>
     @endforelse
 </ul>
