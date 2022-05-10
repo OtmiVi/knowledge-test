@@ -118,7 +118,7 @@ class AdminGroupController extends Controller
      */
     public function destroy($id)
     {
-        $item = Group::findOrFailOrFail($id);
+        $item = Group::findOrFail($id);
         $item->delete();
 
         if($item){

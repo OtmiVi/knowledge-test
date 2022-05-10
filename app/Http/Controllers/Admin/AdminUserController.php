@@ -53,13 +53,13 @@ class AdminUserController extends Controller
     }
 
     public function show($id){
-        $item = User::findOrFailOrFail($id);
+        $item = User::findOrFail($id);
 
         return view('admin.users.show', compact('item'));
     }
 
     public function edit($id){
-        $item = User::findOrFailOrFail($id);
+        $item = User::findOrFail($id);
 
         if($item){
             return view('admin.users.edit', compact('item'));
@@ -84,7 +84,7 @@ class AdminUserController extends Controller
 
     public function destroy($id)
     {
-        $item = User::findOrFailOrFail($id);
+        $item = User::findOrFail($id);
         $item->delete();
 
         if($item){

@@ -20,7 +20,7 @@ class AdminDisciplineGroupController extends Controller
     public function show($id)
     {
         $groups = Group::all();
-        $item = Discipline::findOrFailOrFail($id);
+        $item = Discipline::findOrFail($id);
         return view('admin.disciplinegroup.show', compact('groups', 'item'));
     }
 
@@ -33,7 +33,7 @@ class AdminDisciplineGroupController extends Controller
     public function store(DisciplineAddGroupRequest $request)
     {
         $data = $request->input();
-        $discipline = Discipline::findOrFailOrFail($data['discipline_id']);
+        $discipline = Discipline::findOrFail($data['discipline_id']);
 
         $item = true;
         foreach($discipline->groups as $group){
