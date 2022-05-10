@@ -7,6 +7,8 @@ use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 
 class AdminUserController extends Controller
 {
@@ -29,7 +31,6 @@ class AdminUserController extends Controller
                 ->orderBy('name')
                 ->paginate(10);
         }
-        
         return view('admin.users.index', compact('items'));
     }
 
@@ -39,6 +40,7 @@ class AdminUserController extends Controller
 
     public function store(UserCreateRequest $request){
         $data = $request->input();
+        $data['password'] = Hash::make($data['password']);
 
         $item = (new User())->create($data);
         if($item){
@@ -54,13 +56,11 @@ class AdminUserController extends Controller
 
     public function show($id){
         $item = User::findOrFail($id);
-
         return view('admin.users.show', compact('item'));
     }
 
     public function edit($id){
         $item = User::findOrFail($id);
-
         if($item){
             return view('admin.users.edit', compact('item'));
         }else{
