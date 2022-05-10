@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DisciplineCreateRequest;
+use App\Http\Requests\DisciplineUpdateRequest;
 use App\Models\Discipline;
 use Illuminate\Http\Request;
 
@@ -35,7 +37,7 @@ class AdminDisciplineController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DisciplineCreateRequest $request)
     {
         $data = $request->input();
 
@@ -60,9 +62,8 @@ class AdminDisciplineController extends Controller
      */
     public function show($id)
     {
-        $item = Discipline::find($id);
+        $item = Discipline::findOrFail($id);
         return view('admin.disciplines.show', compact('item'));
-
     }
 
     /**
@@ -73,7 +74,7 @@ class AdminDisciplineController extends Controller
      */
     public function edit($id)
     {
-        $item = Discipline::find($id);
+        $item = Discipline::findOrFail($id);
 
         if($item){
             return view('admin.disciplines.edit', compact('item'));
@@ -90,9 +91,9 @@ class AdminDisciplineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DisciplineUpdateRequest $request, $id)
     {
-        $item = Discipline::find($id);
+        $item = Discipline::findOrFail($id);
 
         $item->fill($request->input())->save();
         

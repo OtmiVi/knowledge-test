@@ -13,12 +13,12 @@
     <input type="hidden" name="discipline_id" value="{{$item->id}}">
     <div class="mb-3">
         <label for="groupName" class="form-label fs-3">Виберіть групу для дисципліни</label>
+        <div id="hintgroup" class="form-text">Група</div>
         <select class="form-select" aria-describedby="hintgroup" name="group_id">
             @foreach($groups as $group)
                 <option value="{{$group->id}}">{{$group->name}}</option>
             @endforeach
         </select>
-        <div id="hintgroup" class="form-text">Група</div>
     </div>
     <button type="submit" class="btn btn-success">Додати нову групу</button>
 </form>
@@ -27,7 +27,7 @@
     <li class="list-group-item list-group-item-success">
         <p class="fs-5 mb-0">Групи в яких викладається дисципліна:</p> 
     </li>
-    @foreach($item->groups as $group)
+    @forelse($item->groups as $group)
     <li class="list-group-item d-flex justify-content-between">
         <a class="text-decoration-none" href="{{route('admin.groups.show', $group->id)}}">{{$group->name}}</a>
         <form action="{{route('admin.disciplinesgroups.destroy',[$item->id, $group->id])}}" 
@@ -41,7 +41,11 @@
             </button>
         </form>
     </li>
-    @endforeach
+    @empty
+    <li class="list-group-item list-group-item-secondary">
+        Групи не вибрано
+    </li>
+    @endforelse
 </ul>
 
 

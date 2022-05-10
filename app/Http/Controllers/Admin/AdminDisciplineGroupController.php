@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DisciplineAddGroupRequest;
 use App\Models\Discipline;
 use App\Models\DisciplineGroup;
 use App\Models\Group;
@@ -19,7 +20,7 @@ class AdminDisciplineGroupController extends Controller
     public function show($id)
     {
         $groups = Group::all();
-        $item = Discipline::find($id);
+        $item = Discipline::findOrFail($id);
         return view('admin.disciplinegroup.show', compact('groups', 'item'));
     }
 
@@ -29,11 +30,10 @@ class AdminDisciplineGroupController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DisciplineAddGroupRequest $request)
     {
         $data = $request->input();
-        $discipline = Discipline::find($data['discipline_id']);
-
+        $discipline = Discipline::findOrFail($data['discipline_id']);
 
         $item = true;
         foreach($discipline->groups as $group){

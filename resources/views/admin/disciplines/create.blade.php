@@ -9,21 +9,22 @@
 @csrf
     <div class="mb-3">
         <label for="disciplineName" class="form-label fs-3">Нова дисципліна</label>
+        <div id="hint" class="form-text">Введіть назву дисципліни</div>
         <input type="text" 
+            required
             class="form-control" 
             id="disciplineName" 
             name="name" 
             aria-describedby="hint"
             value="{{old('name')}}">
-        <div id="hint" class="form-text">Введіть назву дисципліни</div>
+        <div id="hintDescription" class="form-text">Введіть опис дисципліни</div>
         <textarea
+            required
             class="form-control" 
             id="disciplineDescription" 
             name="description" 
             aria-describedby="hintName"
-            rows="3">{{old('name')}}
-        </textarea>
-        <div id="hintDescription" class="form-text">Введіть опис дисципліни</div>
+            rows="3">{{old('description')}}</textarea>
     </div>
     <button type="submit" class="btn btn-primary">Додати</button>
 </form>

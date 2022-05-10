@@ -9,6 +9,7 @@
 @include('layouts.error')
 @include('layouts.success')
 
+@if($items->count())
 <table class="table table-striped table-hover" >
     <thead >
         <tr class="table-dark">
@@ -42,4 +43,9 @@
     </tbody>
 </table>
 {{ $items->links() }}
+@else
+<div class="alert alert-dark" role="alert">
+    Дисциплін немає
+</div>
+@endif
 @endsection
