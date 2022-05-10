@@ -25,7 +25,7 @@
     </div>
 </form>
 <br>
-@if(count($items))
+@if($items->count())
 <table class="table table-striped table-hover" >
     <thead >
         <tr class="table-dark">
@@ -44,7 +44,7 @@
                 <a class="btn btn-outline-info" href="{{route('admin.users.show', $item->id)}}">Переглянути профіль</a>
             </td>
             <td>
-                <a class="btn btn-outline-warning" href="{{route('admin.students.edit', $item->id)}}">Оновити</a>
+                <a class="btn btn-outline-warning" href="{{route('admin.users.edit', $item->id)}}">Редагувати</a>
                 <form action="{{route('admin.users.destroy', $item->id)}}" 
                     method="post" 
                     class="d-inline"

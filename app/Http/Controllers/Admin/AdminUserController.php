@@ -53,13 +53,13 @@ class AdminUserController extends Controller
     }
 
     public function show($id){
-        $item = User::findOrFail($id);
+        $item = User::findOrFailOrFail($id);
 
         return view('admin.users.show', compact('item'));
     }
 
     public function edit($id){
-        $item = User::findOrFail($id);
+        $item = User::findOrFailOrFail($id);
 
         if($item){
             return view('admin.users.edit', compact('item'));
@@ -69,7 +69,7 @@ class AdminUserController extends Controller
     }
 
     public function update(UserUpdateRequest $request, $id){
-        $item = User::find($id);
+        $item = User::findOrFail($id);
         $item->fill($request->input())->save();
         
         if($item){
@@ -84,7 +84,7 @@ class AdminUserController extends Controller
 
     public function destroy($id)
     {
-        $item = User::findOrFail($id);
+        $item = User::findOrFailOrFail($id);
         $item->delete();
 
         if($item){

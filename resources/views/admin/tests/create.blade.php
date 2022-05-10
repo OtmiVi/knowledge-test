@@ -10,20 +10,22 @@
     <input type="hidden" name="discipline_id" value="{{$discipline}}">
     <div class="mb-3">
         <label for="testName" class="form-label fs-3">Новий тест</label>
+        <div id="hint" class="form-text">Введіть назву тесту</div>
         <input type="text" 
+            required
             class="form-control" 
             id="testName" 
             name="title" 
             aria-describedby="hint"
             value="{{old('title')}}">
-        <div id="hint" class="form-text">Введіть назву тесту</div>
+        <div id="hintDescription" class="form-text">Введіть опис тесту</div>
         <textarea
+            required
             class="form-control" 
             id="testDescription" 
             name="description" 
             aria-describedby="hintDescription"
             rows="3">{{old('description')}}</textarea>
-        <div id="hintDescription" class="form-text">Введіть опис тесту</div>
     </div>
     <hr>
     <div id="list">
@@ -32,6 +34,7 @@
                 <p>Запитання</p>
                 <div class="input-group mb-3" id="question" data-value="0">
                     <textarea 
+                        required
                         id="questionName" 
                         name="questions[0][question]" 
                         class="form-control mb-3" 
@@ -47,6 +50,7 @@
                                 name="questions[0][right]">
                         </div>
                         <input 
+                            required
                             type="text"
                             id="answerName" 
                             name="questions[0][answers][]" 
@@ -62,6 +66,7 @@
                                 name="questions[0][right]">
                         </div>
                         <input 
+                            required
                             type="text"
                             id="answerName" 
                             name="questions[0][answers][]" 
@@ -73,7 +78,6 @@
                 <button class="btn btn-primary" id="add_answer" value="2">Додати відповідь</button>
             </div>
         </div>
-        
     </div>
     <button class="btn btn-primary" id="add_question" value="1">Додати завдання</button>
     <hr>

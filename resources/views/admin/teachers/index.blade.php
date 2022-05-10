@@ -16,7 +16,7 @@
     </div>
 </form>
 <br>
-@if(!empty($items))
+@if($items->count())
 <table class="table table-striped table-hover" >
     <thead >
         <tr class="table-dark">

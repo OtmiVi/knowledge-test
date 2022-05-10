@@ -77,7 +77,7 @@ class AdminTestController extends Controller
      */
     public function show($id)
     {
-        $item = Test::find($id);
+        $item = Test::findOrFail($id);
         return view('admin.tests.show', compact('item'));
     }
 
@@ -89,7 +89,7 @@ class AdminTestController extends Controller
      */
     public function edit($id)
     {
-        $item = Test::find($id);
+        $item = Test::findOrFail($id);
 
         if($item){
             return view('admin.tests.edit', compact('item'));
@@ -110,7 +110,7 @@ class AdminTestController extends Controller
     {
         $data = $request->input();
 
-        $item = Test::findOrFail($test);
+        $item = Test::findOrFailOrFail($test);
         $item->delete();
 
         if($item){
@@ -176,7 +176,7 @@ class AdminTestController extends Controller
      */
     public function destroy($id)
     {
-        $item = Test::findOrFail($id);
+        $item = Test::findOrFailOrFail($id);
         $item->delete();
 
         if($item){
@@ -195,7 +195,7 @@ class AdminTestController extends Controller
      */
     public function destroyQuestion($id)
     {
-        $item = TestQuestion::findOrFail($id);
+        $item = TestQuestion::findOrFailOrFail($id);
         $item->delete();
 
         if($item){
@@ -215,7 +215,7 @@ class AdminTestController extends Controller
      */
     public function destroynAswer($id)
     {
-        $item = TestAnswer::findOrFail($id);
+        $item = TestAnswer::findOrFailOrFail($id);
         $item->delete();
 
         if($item){

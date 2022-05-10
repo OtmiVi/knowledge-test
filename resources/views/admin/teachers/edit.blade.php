@@ -11,6 +11,7 @@
 @csrf
     <div class="mb-3">
         <label for="teacherName" class="form-label fs-3">Редагування профілю</label>
+        <div id="hintName" class="form-text">Введіть нове ім'я викладача</div>
         <input type="text" 
             required
             class="form-control" 
@@ -18,7 +19,7 @@
             name="name" 
             aria-describedby="hintName" 
             value="{{$item->name}}">
-        <div id="hintName" class="form-text">Введіть нове ім'я викладача</div>
+        <div id="hintEmail" class="form-text">Введіть новий email викладача</div>
         <input type="email" 
             required
             class="form-control" 
@@ -26,7 +27,7 @@
             name="email" 
             aria-describedby="hintEmail" 
             value="{{$item->email}}">
-        <div id="hintEmail" class="form-text">Введіть новий email викладача</div>
+        <div id="hintPosition" class="form-text">Введіть нову посаду викладача</div>
         <input type="text" 
             required
             class="form-control" 
@@ -34,7 +35,7 @@
             name="position" 
             aria-describedby="hintName" 
             value="{{$item->teacherDescription->position}}">
-        <div id="hintPosition" class="form-text">Введіть нову посаду викладача</div>
+        <div id="hintDescription" class="form-text">Введіть новий опис викладача</div>
         <textarea
             required
             class="form-control" 
@@ -43,7 +44,7 @@
             aria-describedby="hintName"
             rows="3">{{$item->teacherDescription->description}}
         </textarea>
-        <div id="hintDescription" class="form-text">Введіть новий опис викладача</div>
+        
     </div>
     <button type="submit" class="btn btn-warning">Оновити</button>
 </form>

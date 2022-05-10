@@ -62,7 +62,7 @@ class AdminDisciplineController extends Controller
      */
     public function show($id)
     {
-        $item = Discipline::findOrFail($id);
+        $item = Discipline::findOrFailOrFail($id);
         return view('admin.disciplines.show', compact('item'));
     }
 
@@ -74,7 +74,7 @@ class AdminDisciplineController extends Controller
      */
     public function edit($id)
     {
-        $item = Discipline::findOrFail($id);
+        $item = Discipline::findOrFailOrFail($id);
 
         if($item){
             return view('admin.disciplines.edit', compact('item'));
@@ -93,7 +93,7 @@ class AdminDisciplineController extends Controller
      */
     public function update(DisciplineUpdateRequest $request, $id)
     {
-        $item = Discipline::findOrFail($id);
+        $item = Discipline::findOrFailOrFail($id);
 
         $item->fill($request->input())->save();
         
@@ -116,7 +116,7 @@ class AdminDisciplineController extends Controller
      */
     public function destroy($id)
     {
-        $item = Discipline::findOrFail($id);
+        $item = Discipline::findOrFailOrFail($id);
         $item->delete();
 
         if($item){

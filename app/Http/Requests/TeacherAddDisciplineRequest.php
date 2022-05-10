@@ -24,7 +24,8 @@ class TeacherAddDisciplineRequest extends FormRequest
     public function rules()
     {
         return [
-            'discipline_id' => 'numeric|required'
+            'discipline_id' => 'numeric|required',
+            'user_id' => 'numeric|required'
         ];
     }
 }

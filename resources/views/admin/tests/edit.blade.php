@@ -13,6 +13,7 @@
     <div class="mb-3">
         <label for="testName" class="form-label fs-3">Оновити тест</label>
         <input type="text" 
+            required
             class="form-control" 
             id="testName" 
             name="title" 
@@ -20,6 +21,7 @@
             value="{{$item->title}}">
         <div id="hint" class="form-text">Введіть назву тесту</div>
         <textarea
+            required
             class="form-control" 
             id="testDescription" 
             name="description" 
@@ -27,21 +29,21 @@
             rows="3">{{$item->description}}</textarea>
         <div id="hintDescription" class="form-text">Введіть опис тесту</div>
     </div>
-    
     <button class="btn btn-warning" type="submit" >Оновити</button>
     <hr>
     @php
-    $questions = $item->questions;
-    $i = 0;
+        $questions = $item->questions;
+        $i = 0;
     @endphp
     <div id="list">
         <form></form>
         @for($i; $i < count($questions); $i++)
-        <div class="card mb-3">
-            <div class="card-body alert alert-secondary">
+        <div class="card mb-3 alert alert-secondary">
+            <div class="card-body">
                 <p>Запитання №{{$i+1}}</p>
                 <div class="input-group mb-3" id="question" data-value="{{$i}}">
                     <textarea 
+                        required
                         id="questionName" 
                         name="questions[{{$i}}][question]" 
                         class="form-control mb-3" 
@@ -76,6 +78,7 @@
                                 name="questions[{{$i}}][right]">
                         </div>
                         <input 
+                            required
                             type="text"
                             id="answerName" 
                             name="questions[{{$i}}][answers][]" 
@@ -103,7 +106,6 @@
             </div>
         </div>
         @endfor
-        
     </div>
     <button class="btn btn-primary" id="add_question" value="{{$i}}">Додати завдання</button>
     <hr>

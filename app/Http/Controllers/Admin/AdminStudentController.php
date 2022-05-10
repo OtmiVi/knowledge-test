@@ -38,7 +38,7 @@ class AdminStudentController extends Controller
     public function addGroup($id)
     {
         $groups = Group::all();
-        $item = User::find($id);
+        $item = User::findOrFail($id);
         if($item){
             return view('admin.students.addGroup', compact('item', 'groups'));
         }else{
@@ -77,7 +77,7 @@ class AdminStudentController extends Controller
      */
     public function show($id)
     {
-        $item = User::find($id);
+        $item = User::findOrFail($id);
         return view('admin.students.show', compact('item'));
     }
 
@@ -90,7 +90,7 @@ class AdminStudentController extends Controller
     public function edit($id)
     {
         $groups = Group::all();
-        $item = User::find($id);
+        $item = User::findOrFail($id);
         if($item){
             return view('admin.students.edit', compact('item', 'groups'));
         }else{
@@ -109,7 +109,7 @@ class AdminStudentController extends Controller
     {
 
         $data = $request->input();
-        $item = User::find($id);
+        $item = User::findOrFail($id);
 
         $item->name = $data['name'];
         $item->email = $data['email'];
@@ -139,16 +139,16 @@ class AdminStudentController extends Controller
         $item = GroupUser::where('user_id', $id);
         $item->delete();
 
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         $user->user_type = NULL;
         $user->save();
 
         if($item && $user){
-            return redirect()
-                ->route('admin.students.index')
+            return back()
                 ->with(['success' => 'Успішно оновлено']);
         }else{
-            return back()->withErrors(['message' => 'Не вдалось видалити']);
+            return back()
+                ->withErrors(['message' => 'Не вдалось видалити']);
         }
     }
 }

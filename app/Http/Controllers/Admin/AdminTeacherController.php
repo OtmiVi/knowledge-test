@@ -39,7 +39,7 @@ class AdminTeacherController extends Controller
     public function addDiscipline($id)
     {
         $disciplines = Discipline::all();
-        $item = User::find($id);
+        $item = User::findOrFail($id);
 
         if($item){
             return view('admin.teachers.addDiscipline', compact('item', 'disciplines'));
@@ -57,7 +57,7 @@ class AdminTeacherController extends Controller
     public function store(TeacherAddDisciplineRequest $request)
     {
         $data = $request->input();
-        $user = User::find($data['user_id']);
+        $user = User::findOrFail($data['user_id']);
 
 
         $item = true;
@@ -87,7 +87,7 @@ class AdminTeacherController extends Controller
      */
     public function show($id)
     {
-        $item = User::find($id);
+        $item = User::findOrFail($id);
         return view('admin.teachers.show', compact('item'));
     }
 
@@ -99,7 +99,7 @@ class AdminTeacherController extends Controller
      */
     public function edit($id)
     {
-        $item = User::find($id);
+        $item = User::findOrFail($id);
         return view('admin.teachers.edit', compact('item'));
     }
 
@@ -113,7 +113,7 @@ class AdminTeacherController extends Controller
     public function update(TeacherUpdateRequest $request, $id)
     {
         $data = $request->input();
-        $item = User::find($id);
+        $item = User::findOrFail($id);
 
         $item->name = $data['name'];
         $item->email = $data['email'];
@@ -147,7 +147,7 @@ class AdminTeacherController extends Controller
         $item = DisciplineUser::where('user_id', $id);
         $item->delete();
 
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         $user->user_type = NULL;
         $user->save();
 

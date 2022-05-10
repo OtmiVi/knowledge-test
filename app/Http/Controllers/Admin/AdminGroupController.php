@@ -63,7 +63,7 @@ class AdminGroupController extends Controller
      */
     public function show($id)
     {
-        $item = Group::find($id);
+        $item = Group::findOrFail($id);
         return view('admin.groups.show', compact('item'));
 
     }
@@ -76,7 +76,7 @@ class AdminGroupController extends Controller
      */
     public function edit($id)
     {
-        $item = Group::find($id);
+        $item = Group::findOrFail($id);
 
         if($item){
             return view('admin.groups.edit', compact('item'));
@@ -95,7 +95,7 @@ class AdminGroupController extends Controller
      */
     public function update(GroupUpdateRequest $request, $id)
     {
-        $item = Group::find($id);
+        $item = Group::findOrFail($id);
 
         $item->fill($request->input())->save();
         
@@ -118,7 +118,7 @@ class AdminGroupController extends Controller
      */
     public function destroy($id)
     {
-        $item = Group::findOrFail($id);
+        $item = Group::findOrFailOrFail($id);
         $item->delete();
 
         if($item){
