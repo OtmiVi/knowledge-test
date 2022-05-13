@@ -86,5 +86,12 @@ Route::middleware('auth')->
         Route::get('test/visible/{test}', 'AdminTestController@changeVisible')
             ->name('admin.tests.visible');
     });
+    Route::prefix('teacher')->
+    namespace('App\Http\Controllers\Teacher')->
+    middleware('role:teacher')->
+    group( function(){
+        #AdminController
+        Route::get('/', 'TeacherController@index')->name('teacher');
+    });
 
 });
