@@ -1,54 +1,26 @@
 @extends('teacher.layouts.app')
 
 @section('content')
+@include('layouts.error')
 <div class="container">
-    <div class="row">
-        <a href="{{route('admin.groups.index')}} " class="col text-decoration-none">
+    <p  class="text-center fs-1">Дисципліни які викладаються</p>
+    <hr>
+    @if($item->disciplines->count())
+        @foreach($item->disciplines as $discipline)
             <div class="alert alert-primary">
-                <h4 class="alert-heading">Групи</h4>
+                <a class='text-decoration-none' href="{{route('teacher.discipline.show', $discipline->id)}}">
+                    <p class="alert-heading fs-4">{{$discipline->name}}</p>
+                </a>
                 <hr>
-                <p class="mb-0">Перегляд та редагуваня груп та їхніх зв'язків.</p>
+                <p class="mb-0">{{$discipline->description}}</p>
             </div>
-        </a>
-        <a href="{{route('admin.students.index')}} " class="col text-decoration-none">
-            <div class="alert alert-success">
-                <h4 class="alert-heading">Студенти</h4>
-                <hr>
-                <p class="mb-0">Список всіх студентів, редагування та перегляд інформації про них.</p>
-            </div>
-        </a>
-    </div>
-    <div class="row">
-        <a href="{{route('admin.teachers.index')}} " class="col text-decoration-none">
-            <div class="alert alert-secondary">
-                <h4 class="alert-heading">Викладачі</h4>
-                <hr>
-                <p class="mb-0">Інформація про викладачів та їхні дисципліни.</p>
-            </div>
-        </a>
-        <a href="{{route('admin.disciplines.index')}} " class="col text-decoration-none">
-            <div class="alert alert-warning">
-                <h4 class="alert-heading">Дисципліни</h4>
-                <hr>
-                <p class="mb-0">Навчальні дисципліни. Їхнє редагування та перегляд.</p>
-            </div>
-        </a>
-    </div>
-    <div class="row">
-        <a href="{{route('admin.users.index')}} " class="col text-decoration-none">
-            <div class="alert alert-secondary">
-                <h4 class="alert-heading">Користувачі</h4>
-                <hr>
-                <p class="mb-0">Інформація про викладачів та їхні дисципліни.</p>
-            </div>
-        </a>
-        <a href="{{route('admin.disciplines.index')}} " class="col text-decoration-none">
-            <div class="alert alert-warning">
-                <h4 class="alert-heading">Дисципліни</h4>
-                <hr>
-                <p class="mb-0">Навчальні дисципліни. Їхнє редагування та перегляд.</p>
-            </div>
-        </a>
-    </div>
+        @endforeach
+    @else
+        <div class="alert alert-warning">
+            <p class="alert-heading fs-4">На жаль ви не маєте доступу до дисциплін</p>
+            <hr>
+            <p class="mb-0">Звернітся до адміністратора за допомогою</p>
+        </div>  
+    @endif
 </div>
-@endsection 
+@endsection         

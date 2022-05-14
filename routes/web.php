@@ -92,6 +92,21 @@ Route::middleware('auth')->
     group( function(){
         #AdminController
         Route::get('/', 'TeacherController@index')->name('teacher');
+
+        Route::get('/discipline/{discipline}', 'TeacherDisciplineController@show')
+            ->name('teacher.disciplines.show');
+
+        Route::resource('test', TeacherTestController::class)->names('teacher.tests');
+        Route::get('/test/create/{discipline}','TeacherTestController@create')
+            ->name('teacher.tests.create');
+        Route::post('/test/update_test/{test}','TeacherTestController@updateTest')
+            ->name('teacher.tests.update_test');
+        Route::post('/test/destroy_question/{question}','TeacherTestController@destroyQuestion')
+            ->name('teacher.tests.destroy_question');
+        Route::post('/test/destroy_answer/{answer}','TeacherTestController@destroyAnswer')
+            ->name('teacher.tests.destroy_answer');
+        Route::get('test/visible/{test}', 'TeacherTestController@changeVisible')
+            ->name('teacher.tests.visible');
     });
 
 });
