@@ -109,4 +109,22 @@ Route::middleware('auth')->
             ->name('teacher.tests.visible');
     });
 
+    Route::prefix('student')->
+    namespace('App\Http\Controllers\Student')->
+    middleware('role:student')->
+    group( function(){
+        #AdminController
+        Route::get('/', 'StudentController@index')->name('student');
+
+        Route::get('/discipline/{discipline}', 'StudentDisciplineController@show')
+            ->name('student.disciplines.show');
+
+        Route::get('/test/open/{test}', 'StudentTestController@open')
+            ->name('student.tests.open');
+        Route::get('/test/show/{test}', 'StudentTestController@show')
+            ->name('student.tests.show');
+        Route::post('/test/calculate_score', 'StudentTestController@calculateScore')
+            ->name('student.tests.calculateScore');
+    });
+
 });
