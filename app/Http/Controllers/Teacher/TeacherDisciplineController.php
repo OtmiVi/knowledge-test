@@ -21,12 +21,13 @@ class TeacherDisciplineController extends Controller
     private function haveDiscipline($disciplineId){
         foreach($this->user->disciplines as $discipline){
             if($discipline->id != $disciplineId){
-                return redirect()
+                return;
+            }
+        }
+        return redirect()
                     ->to('teacher')
                     ->withErrors(['message' => 'Ви не маєте доступу до даної дисципліни'])
                     ->send();
-            }
-        }
     }
 
     public function show($id){
