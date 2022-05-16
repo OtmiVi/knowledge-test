@@ -6,15 +6,21 @@
 <div class="offcanvas-body">
 	<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 	<li class="nav-item">
-		<a class="nav-link active" aria-current="page" href="{{route('teacher')}}">Головна</a>
+		<a class="nav-link active" aria-current="page" href="{{route('student')}}">Головна</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link active" aria-current="page" href="{{route('student')}}">Група</a>
 	</li>
 	<hr>
+	@forelse(Auth::user()->group[0]->disciplines as $discipline)
 	<li class="nav-item">
-		<a class="nav-link" href="{{route('admin.groups.index')}}">Групи</a>
+		<a class="nav-link" href="{{route('student.disciplines.show', $discipline->id)}}">{{$discipline->name}}</a>
 	</li>
+	@empty
 	<li class="nav-item">
-		<a class="nav-link" href="{{route('admin.disciplines.index')}}">Дисципліни</a>
+		<p class="nav-link">На жаль у вас немає навчальни дисциплін</p>
 	</li>
+	@endforelse
 	<div class="dropdown">
 	<p class="dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
 		{{Auth::user()->name}}

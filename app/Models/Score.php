@@ -13,6 +13,7 @@ class Score extends Model
         'test_id',
         'user_id',
         'group_id',
+        'discipline_id',
         'score'
     ];
 

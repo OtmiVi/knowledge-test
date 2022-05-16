@@ -29,14 +29,20 @@
         <p class="fs-5 mb-0">Тести:</p> 
     </li>
     @forelse($item->tests->where('visible', 1) as $test)
-    <li class="list-group-item">
-        <a class="text-decoration-none" href="{{route('student.tests.open', $test->id)}}">{{$test->title}}</a>
-    </li>
+        @if(isset($score[$test->id]))
+            <li class="list-group-item d-flex justify-content-between">
+                <p class="mb-0">{{$test->title}}</p>
+                <span class="badge bg-success rounded-pill">{{$score[$test->id]}}</span>
+            </li>
+        @else
+            <li class="list-group-item">
+                <a class="text-decoration-none" href="{{route('student.tests.open', $test->id)}}">{{$test->title}}</a>
+            </li>
+        @endif
     @empty
     <li class="list-group-item list-group-item-secondary">
         Тестів немає
     </li>
     @endforelse
 </ul>
-<hr>
 @endsection

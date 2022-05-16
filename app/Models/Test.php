@@ -20,4 +20,8 @@ class Test extends Model
         return $this->hasMany(TestQuestion::class);
     }
 
+    public function discipline(){
+        return $this->belongsTo(Discipline::class);
+    }
+
 }

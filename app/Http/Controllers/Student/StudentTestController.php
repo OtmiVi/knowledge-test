@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
-use App\Models\Discipline;
 use App\Models\Score;
 use App\Models\Test;
 use App\Models\TestAnswer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class StudentTestController extends StudentController
 {
@@ -52,6 +50,7 @@ class StudentTestController extends StudentController
             'test_id' => $this->test->id,
             'user_id' => $this->user->id,
             'group_id' => $this->user->group[0]->id,
+            'discipline_id' => $this->test->discipline->id,
             'score' => (int)$score,
         ];
 
@@ -59,7 +58,7 @@ class StudentTestController extends StudentController
 
         if($item){
             return redirect()
-                ->route('student.tests.open', $this->test->id);
+                ->route('student.disciplines.show', $this->test->discipline->id);
         }else{
             return back()
                 ->withInput()

@@ -18,7 +18,8 @@ class CreateScoresTable extends Migration
             $table->foreignId('test_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('group_id')->constrained()->onDelete('cascade');
-            $table->integer('scope')->default(0);
+            $table->foreignId('discipline_id')->constrained()->onDelete('cascade');
+            $table->integer('score')->default(0);
             $table->timestamps();
         });
     }
