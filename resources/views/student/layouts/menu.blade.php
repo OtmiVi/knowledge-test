@@ -9,7 +9,7 @@
 		<a class="nav-link active" aria-current="page" href="{{route('student')}}">Головна</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link active" aria-current="page" href="{{route('student')}}">Група</a>
+		<a class="nav-link active" aria-current="page" href="{{route('student.groups.index')}}">Група</a>
 	</li>
 	<hr>
 	@forelse(Auth::user()->group[0]->disciplines as $discipline)
@@ -27,18 +27,16 @@
 	</p>
 	<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 		<li>
-		<a class="dropdown-item" href="{{ route('logout') }}"
-			onclick="event.preventDefault();
-				document.getElementById('logout-form').submit();">
-			{{ __('Вийти') }}
-		</a>
+			<a class="dropdown-item" href="{{ route('logout') }}"
+				onclick="event.preventDefault();
+					document.getElementById('logout-form').submit();">
+				{{ __('Вийти') }}
+			</a>
 
-		<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-			@csrf
-		</form>
+			<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+				@csrf
+			</form>	
 		</li>
-		<li><a class="dropdown-item" href="#">Another action</a></li>
-		<li><a class="dropdown-item" href="#">Something else here</a></li>
 	</ul>
 	</div>
 </div>

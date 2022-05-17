@@ -119,6 +119,9 @@ Route::middleware('auth')->
         Route::get('/discipline/{discipline}', 'StudentDisciplineController@show')
             ->name('student.disciplines.show');
 
+        Route::get('/group', 'StudentGroupController@index')
+            ->name('student.groups.index');
+
         Route::get('/test/open/{test}', 'StudentTestController@open')
             ->name('student.tests.open');
         Route::get('/test/show/{test}', 'StudentTestController@show')
