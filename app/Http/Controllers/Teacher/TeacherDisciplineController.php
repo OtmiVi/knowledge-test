@@ -7,27 +7,18 @@ use App\Models\Discipline;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class TeacherDisciplineController extends Controller
+class TeacherDisciplineController extends TeacherController
 {
-    private $user;
-
-    public function __construct(){
-        $this->middleware(function ($request, $next) {
-            $this->user= Auth::user();
-            return $next($request);
-        }); 
-    }
-
     private function haveDiscipline($disciplineId){
         foreach($this->user->disciplines as $discipline){
-            if($discipline->id != $disciplineId){
+            if($discipline->id == $disciplineId){
                 return;
             }
         }
         return redirect()
-                    ->to('teacher')
-                    ->withErrors(['message' => 'Ви не маєте доступу до даної дисципліни'])
-                    ->send();
+            ->to('teacher')
+            ->withErrors(['message' => 'Ви не маєте доступу до даної дисципліни'])
+            ->send();
     }
 
     public function show($id){

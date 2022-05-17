@@ -5,7 +5,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             @include('teacher.layouts.menu')
-            <a class="navbar-brand" href="#">Offcanvas navbar</a>
+            <a class="navbar-brand" href="{{route('teacher')}}">BrainTest</a>
         </div>
     </nav>
 </div>

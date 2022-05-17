@@ -8,8 +8,17 @@ use Illuminate\Support\Facades\Auth;
 
 class TeacherController extends Controller
 {
+    protected $user;
+
+    public function __construct(){
+        $this->middleware(function ($request, $next) {
+            $this->user= Auth::user();
+            return $next($request);
+        }); 
+    }
+
     public function index(){
-        $item = Auth::user();
+        $item = $this->user;
         return view('teacher.index', compact('item'));
     }
 }

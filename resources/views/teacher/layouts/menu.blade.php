@@ -1,6 +1,6 @@
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 <div class="offcanvas-header">
-	<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Меню користувача</h5>
+	<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Меню викладача</h5>
 	<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 </div>
 <div class="offcanvas-body">
@@ -9,12 +9,15 @@
 		<a class="nav-link active" aria-current="page" href="{{route('teacher')}}">Головна</a>
 	</li>
 	<hr>
+	@forelse(Auth::user()->disciplines as $discipline)
 	<li class="nav-item">
-		<a class="nav-link" href="{{route('admin.groups.index')}}">Групи</a>
+		<a class="nav-link" href="{{route('teacher.disciplines.show', $discipline->id)}}">{{$discipline->name}}</a>
 	</li>
+	@empty
 	<li class="nav-item">
-		<a class="nav-link" href="{{route('admin.disciplines.index')}}">Дисципліни</a>
+		<p class="nav-link">На жаль у вас немає навчальни дисциплін</p>
 	</li>
+	@endforelse
 	<div class="dropdown">
 	<p class="dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
 		{{Auth::user()->name}}
@@ -31,8 +34,6 @@
 			@csrf
 		</form>
 		</li>
-		<li><a class="dropdown-item" href="#">Another action</a></li>
-		<li><a class="dropdown-item" href="#">Something else here</a></li>
 	</ul>
 	</div>
 </div>

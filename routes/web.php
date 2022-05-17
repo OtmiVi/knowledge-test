@@ -74,15 +74,18 @@ Route::middleware('auth')->
             ->name('admin.disciplinesgroups.destroy');
 
         #TestController
-        Route::resource('test', AdminTestController::class)->names('admin.tests');
+        $testMetods = ['create', 'store',  'edit', 'show', 'destroy'];
+        Route::resource('test', AdminTestController::class)
+            ->names('admin.tests')
+            ->only($testMetods);
         Route::get('/test/create/{discipline}','AdminTestController@create')
             ->name('admin.tests.create');
         Route::post('/test/update_test/{test}','AdminTestController@updateTest')
-            ->name('admin.tests.update_test');
+            ->name('admin.tests.updateTest');
         Route::post('/test/destroy_question/{question}','AdminTestController@destroyQuestion')
-            ->name('admin.tests.destroy_question');
+            ->name('admin.tests.destroyQuestion');
         Route::post('/test/destroy_answer/{answer}','AdminTestController@destroyAnswer')
-            ->name('admin.tests.destroy_answer');
+            ->name('admin.tests.destroyAnswer');
         Route::get('test/visible/{test}', 'AdminTestController@changeVisible')
             ->name('admin.tests.visible');
     });
@@ -96,15 +99,18 @@ Route::middleware('auth')->
         Route::get('/discipline/{discipline}', 'TeacherDisciplineController@show')
             ->name('teacher.disciplines.show');
 
-        Route::resource('test', TeacherTestController::class)->names('teacher.tests');
+        $testMetods = ['create', 'store',  'edit', 'show', 'destroy'];
+        Route::resource('test', TeacherTestController::class)
+            ->names('teacher.tests')
+            ->only($testMetods);
         Route::get('/test/create/{discipline}','TeacherTestController@create')
             ->name('teacher.tests.create');
         Route::post('/test/update_test/{test}','TeacherTestController@updateTest')
-            ->name('teacher.tests.update_test');
+            ->name('teacher.tests.updateTest');
         Route::post('/test/destroy_question/{question}','TeacherTestController@destroyQuestion')
-            ->name('teacher.tests.destroy_question');
+            ->name('teacher.tests.destroyQuestion');
         Route::post('/test/destroy_answer/{answer}','TeacherTestController@destroyAnswer')
-            ->name('teacher.tests.destroy_answer');
+            ->name('teacher.tests.destroyAnswer');
         Route::get('test/visible/{test}', 'TeacherTestController@changeVisible')
             ->name('teacher.tests.visible');
     });

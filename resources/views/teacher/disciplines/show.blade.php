@@ -16,6 +16,7 @@
     @forelse($item->users->sortBy('name') as $user)
     <li class="list-group-item d-flex justify-content-between">
         <p>{{$user->name}}</p>
+        <p>{{$user->email}}</p>
     </li>
     @empty
     <li class="list-group-item list-group-item-secondary">

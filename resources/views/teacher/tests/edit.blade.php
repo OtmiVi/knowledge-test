@@ -1,13 +1,13 @@
-@extends('admin.layouts.app')
+@extends('teacher.layouts.app')
 
 @section('content')
-<a href="{{route('admin')}}" class="btn btn-secondary btn-sm">На головну</a>
+<a href="{{route('teacher')}}" class="btn btn-secondary btn-sm">На головну</a>
 <a href="" class="btn btn-secondary btn-sm">Назад</a>
 
 @include('layouts.success')
 @include('layouts.error')
 
-<form action="{{route('admin.tests.update_test', $item->id)}}" method="POST">
+<form action="{{route('teacher.tests.updateTest', $item->id)}}" method="POST">
 @csrf
     <input type="text" hidden name="discipline_id" value="{{$item->discipline_id}}">
     <div class="mb-3">
@@ -51,7 +51,7 @@
                         rows="3">{{$questions[$i]->question}}</textarea>
                     @if(count($questions) > 1)
                     <a href=""></a>
-                        <form action="{{route('admin.tests.destroy_question',$questions[$i]->id)}}" 
+                        <form action="{{route('teacher.tests.destroyQuestion',$questions[$i]->id)}}" 
                             method="post" 
                             class=""
                             onSubmit="return confirm('Підтвердити видалення');">
@@ -59,7 +59,7 @@
                             <button 
                                 type="submit" 
                                 class=" btn btn-outline-danger"
-                                formaction="{{route('admin.tests.destroy_question',$questions[$i]->id)}}">
+                                formaction="{{route('teacher.tests.destroyQuestion',$questions[$i]->id)}}">
                                 видалити
                             </button>
                         </form> 
@@ -86,7 +86,7 @@
                             placeholder="Введіть відповідь"
                             value="{{$questions[$i]->answers[$j]->answer}}">
                         @if(count($questions[$i]->answers) > 2)
-                            <form action="{{route('admin.tests.destroy_answer',$questions[$i]->answers[$j]->id)}}" 
+                            <form action="{{route('teacher.tests.destroyAnswer',$questions[$i]->answers[$j]->id)}}" 
                                 method="post" 
                                 class="d-inline"
                                 onSubmit="return confirm('Підтвердити видалення');">
@@ -94,7 +94,7 @@
                                 <button 
                                     type="submit" 
                                     class="btn btn-outline-danger"
-                                    formaction="{{route('admin.tests.destroy_answer',$questions[$i]->answers[$j]->id)}}">
+                                    formaction="{{route('teacher.tests.destroyAnswer',$questions[$i]->answers[$j]->id)}}">
                                     видалити
                                 </button>
                             </form> 

@@ -8,7 +8,7 @@
     @if($item->disciplines->count())
         @foreach($item->disciplines as $discipline)
             <div class="alert alert-primary">
-                <a class='text-decoration-none' href="{{route('teacher.discipline.show', $discipline->id)}}">
+                <a class='text-decoration-none' href="{{route('teacher.disciplines.show', $discipline->id)}}">
                     <p class="alert-heading fs-4">{{$discipline->name}}</p>
                 </a>
                 <hr>
