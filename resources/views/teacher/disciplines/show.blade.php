@@ -31,7 +31,7 @@
     </li>
     @forelse($item->groups->sortBy('name') as $group)
     <li class="list-group-item">
-        <a class="text-decoration-none" href="{{route('teacher', $group->id)}}">{{$group->name}}</a>
+        <a class="text-decoration-none" href="{{route('teacher.groups.show', [$item->id, $group->id])}}">{{$group->name}}</a>
     </li>
     @empty
     <li class="list-group-item list-group-item-secondary">
@@ -55,6 +55,7 @@
         <a class="text-decoration-none" href="{{route('teacher.tests.show', $test->id)}}">{{$test->title}}</a>
         <div>
             <a href="{{route('teacher.tests.visible',$test->id)}}" class="btn btn-outline-info">V</a>
+            <a href="{{route('teacher.journals.show',$test->id)}}" class="btn btn-outline-success">J</a>
             <a href="{{route('teacher.tests.edit',$test->id)}}" class="btn btn-outline-warning">O</a>
             <form action="{{route('teacher.tests.destroy',$test->id)}}" 
                 method="post" 
@@ -74,7 +75,5 @@
     </li>
     @endforelse
 </ul>
-<hr>
-<a class="btn btn-outline-warning" href="{{route('teacher', $item->id)}}">Оновити</a>
 
 @endsection

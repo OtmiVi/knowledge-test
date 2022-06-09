@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'user_type'
     ];
 
     /**
@@ -52,5 +53,9 @@ class User extends Authenticatable
 
     public function teacherDescription(){
         return $this->hasOne(TeacherDescription::class);
+    }
+
+    public function scores(){
+        return $this->hasMany(Score::class);
     }
 }

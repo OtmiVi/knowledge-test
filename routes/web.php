@@ -89,15 +89,19 @@ Route::middleware('auth')->
         Route::get('test/visible/{test}', 'AdminTestController@changeVisible')
             ->name('admin.tests.visible');
     });
+
     Route::prefix('teacher')->
     namespace('App\Http\Controllers\Teacher')->
     middleware('role:teacher')->
     group( function(){
-        #AdminController
+        #TeacherController
         Route::get('/', 'TeacherController@index')->name('teacher');
 
         Route::get('/discipline/{discipline}', 'TeacherDisciplineController@show')
             ->name('teacher.disciplines.show');
+
+        Route::get('/group/{discipline}/{group}', 'TeacherGroupController@show')
+            ->name('teacher.groups.show');
 
         $testMetods = ['create', 'store',  'edit', 'show', 'destroy'];
         Route::resource('test', TeacherTestController::class)
@@ -113,13 +117,17 @@ Route::middleware('auth')->
             ->name('teacher.tests.destroyAnswer');
         Route::get('test/visible/{test}', 'TeacherTestController@changeVisible')
             ->name('teacher.tests.visible');
+
+        Route::get('test/journal/{test}', 'TeacherJournalController@show')
+            ->name('teacher.journals.show');
+        
     });
 
     Route::prefix('student')->
     namespace('App\Http\Controllers\Student')->
     middleware('role:student')->
     group( function(){
-        #AdminController
+        #StudentController
         Route::get('/', 'StudentController@index')->name('student');
 
         Route::get('/discipline/{discipline}', 'StudentDisciplineController@show')

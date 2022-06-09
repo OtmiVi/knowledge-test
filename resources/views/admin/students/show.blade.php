@@ -16,9 +16,9 @@
 @else
     <p>Група: <a class="text-decoration-none" href="{{route('admin.groups.show', $item->group[0]->id)}}">{{$item->group[0]->name}}</a></p>
 @endif
-
 <p>Email: {{$item->email}}</p>
 <hr>
+@if(isset($item->group[0]))
 <ul class="list-group">
     <li class="list-group-item list-group-item-success">
         <p class="fs-5 mb-0">Дисципліни які вивчаються:</p> 
@@ -34,6 +34,7 @@
     @endforelse
 </ul>
 <hr>
+@endif
 <a class="btn btn-outline-warning" href="{{route('admin.students.edit', $item->id)}}">Редагувати</a>
 <form action="{{route('admin.students.destroy', $item->id)}}" 
     method="post" 

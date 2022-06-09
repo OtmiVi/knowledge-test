@@ -21,12 +21,10 @@ class UsersRoleMiddelware
             if(Auth::user()->user_type == $role){
                 return $next($request);
             }else{
-                return redirect('/home');
+                return redirect('/'.$role);
             }
         }else{
-            return redirect('/login');
+            return redirect('/');
         }
-
-        
     }
 }

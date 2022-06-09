@@ -36,17 +36,10 @@
     </div>
     <div class="row">
         <a href="{{route('admin.users.index')}} " class="col text-decoration-none">
-            <div class="alert alert-secondary">
+            <div class="alert alert-info">
                 <h4 class="alert-heading">Користувачі</h4>
                 <hr>
                 <p class="mb-0">Інформація про викладачів та їхні дисципліни.</p>
-            </div>
-        </a>
-        <a href="{{route('admin.disciplines.index')}} " class="col text-decoration-none">
-            <div class="alert alert-warning">
-                <h4 class="alert-heading">Дисципліни</h4>
-                <hr>
-                <p class="mb-0">Навчальні дисципліни. Їхнє редагування та перегляд.</p>
             </div>
         </a>
     </div>

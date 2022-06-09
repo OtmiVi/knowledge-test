@@ -1,6 +1,6 @@
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 <div class="offcanvas-header">
-	<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Меню користувача</h5>
+	<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Меню адміністратора</h5>
 	<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 </div>
 <div class="offcanvas-body">
@@ -21,6 +21,9 @@
 	<li class="nav-item">
 		<a class="nav-link" href="{{route('admin.disciplines.index')}}">Дисципліни</a>
 	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{route('admin.users.index')}}">Користувачі</a>
+	</li>
 	<div class="dropdown">
 	<p class="dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
 		{{Auth::user()->name}}
@@ -37,8 +40,6 @@
 			@csrf
 		</form>
 		</li>
-		<li><a class="dropdown-item" href="#">Another action</a></li>
-		<li><a class="dropdown-item" href="#">Something else here</a></li>
 	</ul>
 	</div>
 </div>

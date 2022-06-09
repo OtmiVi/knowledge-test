@@ -32,11 +32,11 @@
    
     @foreach($question->answers as $answer)
     
-    @php 
-        $class = "list-group-item d-flex justify-content-between";
-        if($answer->right) $class .= " list-group-item-success"; 
-    @endphp
-    <li class="{{$class}}">
+    @if($answer->right)
+        <li class="list-group-item list-group-item-success">
+    @else
+        <li class="list-group-item">
+    @endif
         <p>{{$answer->answer}}</p>
     </li>
     @endforeach

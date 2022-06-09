@@ -28,23 +28,8 @@
             required
             aria-describedby="hintEmail"
             value="{{$item->email}}">
-        <div id="userPassword1" class="form-text">Введіть новий пароль</div>
-        <input type="password" 
-            class="form-control" 
-            id="userPassword1" 
-            name="password" 
-            required
-            aria-describedby="userPassword"
-            value="{{$item->password}}">
-        <div id="userPassword2" class="form-text">Повторіть пароль</div>
-        <input type="password" 
-            class="form-control" 
-            id="userPassword2" 
-            required
-            aria-describedby="userPassword"
-            value="{{$item->password}}">
-        <div id="userType" class="form-text">Виберіть тип користувача</div>
-        <select name="userType" id="userType" class="form-select">
+        <div id="user_type" class="form-text">Виберіть тип користувача</div>
+        <select name="user_type" id="user_type" class="form-select">
             <option value="" 
             @if($item->user_type == null) 
                 selected
@@ -74,7 +59,7 @@
         </select>
        
     </div>
-    <button type="submit" class="btn btn-primary" onclick="return validateForm()">Додати</button>
+    <button type="submit" class="btn btn-warning" onclick="return validateForm()">Оновити</button>
 </form>
 
 <script src="{{ asset('js/userValid.js')}}"></script>

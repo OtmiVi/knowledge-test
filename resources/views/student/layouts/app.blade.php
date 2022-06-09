@@ -12,7 +12,7 @@
 </head>
 <body>
     @include('student.layouts.header')
-    <div class="container" style="min-height:calc(100vh - 320px);">
+    <div class="container" style="min-height:calc(100vh - 157px);">
         @yield('content')
     </div>
     @include('student.layouts.footer')

@@ -1,5 +1,4 @@
 function validateForm () {
-
     var password1 = document.getElementById('userPassword1');
     var password2 = document.getElementById('userPassword2');
     if (password1.value !== password2.value) {

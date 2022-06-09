@@ -10,7 +10,7 @@
 @method('PATCH')
 @csrf
     <div class="mb-3">
-        <label for="disciplineName" class="form-label fs-3">Назва дисципліни</label>
+        <label for="disciplineName" class="form-label fs-3">Редагування дисципліни</label>
         <div id="hint" class="form-text">Введіть нову назву дисципліни</div>
         <input type="text" 
             required

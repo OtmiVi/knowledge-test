@@ -26,7 +26,7 @@
             required
             aria-describedby="hintEmail"
             value="{{old('email')}}">
-        <div id="userPassword1" class="form-text">Введіть новий пароль</div>
+        <div id="userPassword1" class="form-text">Введіть пароль</div>
         <input type="password" 
             class="form-control" 
             id="userPassword1" 
